@@ -136,5 +136,21 @@ namespace EmployeeRESTSharpTest
             Assert.AreEqual("65000", employee.Salary);
             Console.WriteLine(response.Content);
         }
+        //UC5:- Delete Employee from Employee Payroll JSON Server.
+
+        [TestMethod]
+        public void OnCallingDeleteAPI_ReturnSuccessStatus()
+        {
+            // Arrange
+            // Initialize the request for PUT to add new employee
+            RestRequest request = new RestRequest("/employees/4", Method.Delete);
+
+            // Act
+            RestResponse response = client.ExecuteAsync(request).Result;
+
+            // Assert
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+            Console.WriteLine(response.Content);
+        }
     }
 }
